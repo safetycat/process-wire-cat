@@ -1,4 +1,6 @@
-<?php namespace ProcessWire;
+<?php
+
+namespace ProcessWire;
 
 /**
  * ProcessWire Configuration File
@@ -22,7 +24,7 @@
  *
  */
 
-if(!defined("PROCESSWIRE")) die();
+if (!defined("PROCESSWIRE")) die();
 
 /** @var Config $config */
 
@@ -35,7 +37,7 @@ $config->useFunctionsAPI = true;
 $config->usePageClasses = true;
 
 // Use Markup Regions? (https://processwire.com/docs/front-end/output/markup-regions/)
-$config->useMarkupRegions = true;
+$config->useMarkupRegions = false;
 
 // Prepend this file in /site/templates/ to any rendered template files
 $config->prependTemplateFile = '_init.php';
@@ -48,3 +50,81 @@ $config->templateCompile = false;
 
 /*** INSTALLER CONFIG ********************************************************************/
 
+
+/**
+ * Installer: Database Configuration
+ * 
+ */
+$config->dbHost = 'database';
+$config->dbName = 'docker-processwire';
+$config->dbUser = 'admin';
+$config->dbPass = 'password';
+$config->dbPort = '3306';
+$config->dbEngine = 'InnoDB';
+
+/**
+ * Installer: User Authentication Salt 
+ * 
+ * This value was randomly generated for your system on 2023/11/14.
+ * This should be kept as private as a password and never stored in the database.
+ * Must be retained if you migrate your site from one server to another.
+ * Do not change this value, or user passwords will no longer work.
+ * 
+ */
+$config->userAuthSalt = '8859fd33528f710a4f9b06be70c87580dc3b4b86';
+
+/**
+ * Installer: Table Salt (General Purpose) 
+ * 
+ * Use this rather than userAuthSalt when a hashing salt is needed for non user 
+ * authentication purposes. Like with userAuthSalt, you should never change 
+ * this value or it may break internal system comparisons that use it. 
+ * 
+ */
+$config->tableSalt = 'c9bb39a632b425f0b9a701aa193bff51fe5aa5a4';
+
+/**
+ * Installer: File Permission Configuration
+ * 
+ */
+$config->chmodDir = '0755'; // permission for directories created by ProcessWire
+$config->chmodFile = '0644'; // permission for files created by ProcessWire 
+
+/**
+ * Installer: Time zone setting
+ * 
+ */
+$config->timezone = 'Europe/Lisbon';
+
+/**
+ * Installer: Admin theme
+ * 
+ */
+$config->defaultAdminTheme = 'AdminThemeUikit';
+
+/**
+ * Installer: Unix timestamp of date/time installed
+ * 
+ * This is used to detect which when certain behaviors must be backwards compatible.
+ * Please leave this value as-is.
+ * 
+ */
+$config->installed = 1699961298;
+
+
+/**
+ * Installer: HTTP Hosts Whitelist
+ * 
+ */
+$config->httpHosts = array('localhost');
+
+
+/**
+ * Installer: Debug mode?
+ * 
+ * When debug mode is true, errors and exceptions are visible. 
+ * When false, they are not visible except to superuser and in logs. 
+ * Should be true for development sites and false for live/production sites. 
+ * 
+ */
+$config->debug = true;
